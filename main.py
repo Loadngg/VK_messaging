@@ -27,7 +27,7 @@ def captcha_handler(captcha):
 
 @measure_time
 def main():
-    token = os.environ.get("TOKEN")
+    token = os.getenv("TOKEN")
     message = os.getenv("MESSAGE")
 
     try:
