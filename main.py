@@ -11,9 +11,9 @@ load_dotenv()
 
 
 def measure_time(func):
-    def wrapper(message):
+    def wrapper():
         start_time = time.time()
-        func(message)
+        func()
         print(f"Рассылка выполнена за {time.time() - start_time:.2f}c")
 
     return wrapper
@@ -26,8 +26,9 @@ def captcha_handler(captcha):
 
 
 @measure_time
-def main(message):
+def main():
     token = os.environ.get("TOKEN")
+    message = os.getenv("MESSAGE")
 
     try:
         vk = vk_api.VkApi(token=token, captcha_handler=captcha_handler).get_api()
@@ -53,5 +54,4 @@ def main(message):
 
 
 if __name__ == "__main__":
-    MESSAGE = os.getenv("MESSAGE")
-    main(MESSAGE)
+    main()
