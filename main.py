@@ -53,5 +53,5 @@ def main(message):
 
 
 if __name__ == "__main__":
-    MESSAGE = os.environ.get("MESSAGE")
+    MESSAGE = os.getenv("MESSAGE")
     main(MESSAGE)
